@@ -1,0 +1,9 @@
+[Unit]
+Description=Remote Resource Monitor Service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/monitor_remote.sh <remote_resource_ip_or_hostname> 5
+
+[Install]
+WantedBy=default.target
