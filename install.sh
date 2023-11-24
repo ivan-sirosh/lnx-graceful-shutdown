@@ -6,15 +6,13 @@ DEST_DIR="/usr/local/bin"
 SERVICE_DIR="/etc/systemd/system"
 # Log file directory
 LOG_DIR="/var/log"
-# User to run the service (adjust as needed)
-SERVICE_USER="root"
 
 # Copy monitoring script to destination directory
 cp monitor_remote.sh "$DEST_DIR"
-chmod +x "$DEST_DIR/monitor_remote.sh"
+chmod +x "$DEST_DIR/remote_monitor.sh"
 
 # Create systemd service file for monitoring
-cp monitor_remote.service "$SERVICE_DIR"
+cp remote_monitor.service "$SERVICE_DIR"
 
 # Create log file
 touch "$LOG_DIR/remote_monitor.log"
