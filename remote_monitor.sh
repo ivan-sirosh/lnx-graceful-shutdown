@@ -2,7 +2,7 @@
 
 REMOTE_RESOURCE="$1"
 TIMEOUT="$2"
-SHUTDOWN_FLAG="/var/run/remote_shutdown.flag"
+SHUTDOWN_FLAG="/var/run/remote_monitor_shutdown.flag"
 LOG_FILE="/var/log/remote_monitor.log"
 
 # Function to log messages with a timestamp
