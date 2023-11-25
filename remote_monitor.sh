@@ -10,6 +10,15 @@ log() {
     echo "$(date +"%Y-%m-%d %T"): $1" >> "$LOG_FILE"
 }
 
+# Function to handle termination signals
+terminate() {
+    log "Received termination signal. Exiting."
+    exit 0
+}
+
+# Trap termination signals
+trap terminate SIGTERM SIGINT
+
 log "Checking remote resource: $REMOTE_RESOURCE"
 
 while true; do
