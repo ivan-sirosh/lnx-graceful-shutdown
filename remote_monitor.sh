@@ -2,7 +2,6 @@
 
 TIMEOUT_MINUTES="$1"
 TIMEOUT_SECONDS=$((TIMEOUT_MINUTES * 60))
-REMOTE_RESOURCE="$(ip route show default | awk '/default/ {print $3}')"
 LOG_FILE="/var/log/remote_monitor.log"
 
 # Function to log messages with a timestamp
@@ -13,9 +12,10 @@ log() {
 RESOURCE_DOWN=false
 START_TIME=0
 
-log "Checking remote resource: $REMOTE_RESOURCE"
-
 while true; do
+    REMOTE_RESOURCE="$(ip route show default | awk '/default/ {print $3}')"
+    log "Checking remote resource: $REMOTE_RESOURCE"
+
     if ping -c 1 -W 5 "$REMOTE_RESOURCE"; then
         # Resource is online
         if [ "$RESOURCE_DOWN" = true ]; then
