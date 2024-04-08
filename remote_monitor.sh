@@ -13,8 +13,9 @@ log() {
 RESOURCE_DOWN=false
 START_TIME=0
 
+log "Checking remote resource: $REMOTE_RESOURCE"
+
 while true; do
-    log "Checking remote resource: $REMOTE_RESOURCE"
     if ping -c 1 -W 5 "$REMOTE_RESOURCE"; then
         # Resource is online
         if [ "$RESOURCE_DOWN" = true ]; then
@@ -22,7 +23,6 @@ while true; do
             RESOURCE_DOWN=false
         fi
     else
-        # Resource is down
         if [ "$RESOURCE_DOWN" = false ]; then
             log "Remote resource is down. Initiating graceful shutdown..."
             RESOURCE_DOWN=true
