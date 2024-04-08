@@ -13,6 +13,8 @@ RESOURCE_DOWN=false
 START_TIME=0
 
 while true; do
+    sleep 60
+
     REMOTE_RESOURCE="$(ip route show default | awk '/default/ {print $3}')"
     log "Checking remote resource: $REMOTE_RESOURCE"
 
@@ -40,6 +42,4 @@ while true; do
             exit 0
         fi
     fi
-
-    sleep 60
 done
