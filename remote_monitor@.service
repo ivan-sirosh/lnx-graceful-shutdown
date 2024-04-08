@@ -1,9 +1,11 @@
 [Unit]
 Description=Remote Resource Monitor Service
 Requires=network-online.target multi-user.target
+After=network-online.target
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 90
 ExecStart=/usr/local/bin/remote_monitor.sh %i
 
 [Install]
