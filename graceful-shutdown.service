@@ -5,7 +5,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/graceful-shutdown.sh %i
+EnvironmentFile=/etc/default/graceful-shutdown
+ExecStart=/usr/local/bin/graceful-shutdown.sh $TIMEOUT_MINUTES
 
 [Install]
 WantedBy=default.target

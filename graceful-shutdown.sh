@@ -2,7 +2,7 @@
 
 TIMEOUT_MINUTES="$1"
 TIMEOUT_SECONDS=$((TIMEOUT_MINUTES * 60))
-LOG_FILE="/var/log/remote_monitor.log"
+LOG_FILE="/var/log/graceful-shutdown.log"
 
 # Function to log messages with a timestamp
 log() {
