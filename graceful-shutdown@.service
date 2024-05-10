@@ -1,11 +1,11 @@
 [Unit]
-Description=Remote Resource Monitor Service
+Description=Graceful shutdown service by remote resource monitoring
 Requires=network-online.target multi-user.target
 After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/remote_monitor.sh %i
+ExecStart=/usr/local/bin/graceful-shutdown.sh %i
 
 [Install]
 WantedBy=default.target

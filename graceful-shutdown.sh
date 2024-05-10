@@ -16,17 +16,16 @@ while true; do
     sleep 60
 
     REMOTE_RESOURCE="$(ip route show default | awk '/default/ {print $3}')"
-    log "Checking remote resource: $REMOTE_RESOURCE"
 
     if ping -c 1 -W 5 "$REMOTE_RESOURCE" > /dev/null 2>&1; then
         # Resource is online
         if [ "$RESOURCE_DOWN" = true ]; then
-            log "Remote resource is back online."
+            log "Remote resource: $REMOTE_RESOURCE is back online."
             RESOURCE_DOWN=false
         fi
     else
         if [ "$RESOURCE_DOWN" = false ]; then
-            log "Remote resource is down. Initiating graceful shutdown..."
+            log "Remote resource: $REMOTE_RESOURCE is down. Initiating graceful shutdown... timeout $TIMEOUT_MINUTES min."
             RESOURCE_DOWN=true
             START_TIME=$(date +%s)
         fi
